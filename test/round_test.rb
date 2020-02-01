@@ -65,19 +65,9 @@ class RoundTest < Minitest::Test
     assert_equal 2, round.turns.count
     assert_equal "Incorrect.", round.turns.last.feedback
     assert_equal deck.cards[2], round.current_card
+    assert_equal 1, round.number_correct
   end
 end
-
-# pry(main)> round.take_turn("Venus")
-# #=> #<Turn:0x00007f972a215b38...>
-#
-# pry(main)> round.turns.count
-# #=> 2
-#
-# pry(main)> round.turns.last.feedback
-# #=> "Incorrect."
-#
-
 # pry(main)> round.number_correct
 # #=> 1
 #
@@ -93,6 +83,3 @@ end
 # pry(main)> round.percent_correct_by_category(:Geography)
 # #=> 100.0
 #
-
-# pry(main)> round.current_card
-# #=> #<Card:0x00007fa161a136f0 @answer="North north west", @question="Describe in words the exact direction that is 697.5° clockwise from due north?", @category=:STEM>
