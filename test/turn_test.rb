@@ -48,4 +48,12 @@ class TurnTest < Minitest::Test
     assert_equal "Correct!", turn.feedback
   end
 
+  def test_is_not_case_sensitive
+    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    turn1 = Turn.new("Juneau", card)
+    turn2 = Turn.new("juneau", card)
+
+    assert_equal "Correct!", turn1.feedback
+    assert_equal "Correct!", turn2.feedback
+  end
 end
