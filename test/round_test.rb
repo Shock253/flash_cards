@@ -49,23 +49,22 @@ class RoundTest < Minitest::Test
     round = Round.new(deck)
 
 
-    new_turn = round.take_turn("Juneau")
+    new_turn1 = round.take_turn("Juneau")
 
-    assert_instance_of Turn, new_turn
-    assert_equal true, new_turn.correct?
-    assert_equal [new_turn], round.turns
+
+    assert_instance_of Turn, new_turn1
+    assert_equal [new_turn1], round.turns
+    assert_equal true, new_turn1.correct?
     assert_equal 1, round.number_correct
-    assert_instance_of Card, round.current_card
+    assert_equal deck.cards[1], round.current_card
 
+    new_turn2 = round.take_turn("Venus")
 
-    # pry(main)> round.current_card
-    # #=> #<Card:0x00007fa160a62e90 @answer="Mars", @question="The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", @category=:STEM>
-    #
-
-  end
-
-  def test_case_name
-
+    assert_instance_of Turn, new_turn2
+    assert_equal false, new_turn2.correct?
+    assert_equal 2, round.turns.count
+    assert_equal "Incorrect.", round.turns.last.feedback
+    assert_equal deck.cards[2], round.current_card
   end
 end
 

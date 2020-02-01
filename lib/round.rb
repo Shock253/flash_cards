@@ -21,6 +21,7 @@ class Round
       @number_correct += 1
     end
 
+    @current_card_index += 1
     new_turn
   end
 end
