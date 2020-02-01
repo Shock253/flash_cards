@@ -61,6 +61,7 @@ class RoundTest < Minitest::Test
     new_turn2 = round.take_turn("Venus")
 
     assert_instance_of Turn, new_turn2
+    assert_equal [new_turn1, new_turn2], round.turns
     assert_equal false, new_turn2.correct?
     assert_equal 2, round.turns.count
     assert_equal "Incorrect.", round.turns.last.feedback
