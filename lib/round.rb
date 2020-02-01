@@ -24,4 +24,14 @@ class Round
     @current_card_index += 1
     new_turn
   end
+
+  def number_correct_by_category(category)
+    correct_in_category = 0
+    @turns.each do |turn|
+      if turn.correct? and turn.card.category == category
+        correct_in_category += 1
+      end
+    end
+    correct_in_category
+  end
 end
