@@ -1,5 +1,6 @@
 class Deck
   attr_reader :cards
+
   def initialize(cards)
     @cards = cards
   end
@@ -18,5 +19,4 @@ class Deck
 
     cards_for_category
   end
-
 end
