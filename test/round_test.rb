@@ -37,7 +37,7 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card1, card2, card3])
     round = Round.new(deck)
 
-    assert_equal card1, round.current_card
+    assert_equal deck.cards[0], round.current_card
   end
 
   def test_can_take_turn
@@ -56,23 +56,18 @@ class RoundTest < Minitest::Test
     assert_equal [new_turn], round.turns
     assert_equal 1, round.number_correct
     assert_instance_of Card, round.current_card
+
+
+    # pry(main)> round.current_card
+    # #=> #<Card:0x00007fa160a62e90 @answer="Mars", @question="The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", @category=:STEM>
+    #
+
+  end
+
+  def test_case_name
+
   end
 end
-
-# pry(main)> new_turn.correct?
-# #=> true
-#
-
-# pry(main)> round.turns
-# #=> [#<Turn:0x00007f99842f09e8 @card=#<Card:0x00007f800e29f0c9 @question=""What is the capital of Alaska?", @answer="Juneau", @category=:Geography>, @guess="Juneau">]
-#
-
-# pry(main)> round.number_correct
-# #=> 1
-#
-# pry(main)> round.current_card
-# #=> #<Card:0x00007fa160a62e90 @answer="Mars", @question="The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", @category=:STEM>
-#
 
 # pry(main)> round.take_turn("Venus")
 # #=> #<Turn:0x00007f972a215b38...>
@@ -83,6 +78,7 @@ end
 # pry(main)> round.turns.last.feedback
 # #=> "Incorrect."
 #
+
 # pry(main)> round.number_correct
 # #=> 1
 #
@@ -98,5 +94,6 @@ end
 # pry(main)> round.percent_correct_by_category(:Geography)
 # #=> 100.0
 #
+
 # pry(main)> round.current_card
 # #=> #<Card:0x00007fa161a136f0 @answer="North north west", @question="Describe in words the exact direction that is 697.5° clockwise from due north?", @category=:STEM>
