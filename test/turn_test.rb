@@ -36,16 +36,13 @@ class TurnTest < Minitest::Test
     assert_equal true, turn.correct?
   end
 
-  def test_it_marks_wrong
-    turn = Turn.new("Denver", Card.new("What is the capital of Alaska?", "Juneau", :Geography))
+  def test_it_accurately_grades
+    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    turn1 = Turn.new("Denver", card)
+    turn2 = Turn.new("Juneau", card)
 
-    assert_equal "Incorrect.", turn.feedback
-  end
-
-  def test_it_marks_correct
-    turn = Turn.new("Juneau", Card.new("What is the capital of Alaska?", "Juneau", :Geography))
-
-    assert_equal "Correct!", turn.feedback
+    assert_equal "Incorrect.", turn1.feedback
+    assert_equal "Correct!", turn2.feedback
   end
 
   def test_is_not_case_sensitive
